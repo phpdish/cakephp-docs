@@ -1,38 +1,32 @@
-CakePHP Conventions
+CakePHP 约定
 ###################
 
-We are big fans of convention over configuration. While it takes a bit of time
-to learn CakePHP's conventions, you save time in the long run. By following
-conventions, you get free functionality, and you liberate yourself from the
-maintenance nightmare of tracking config files. Conventions also make for a very
-uniform development experience, allowing other developers to jump in and help.
+我们是约定优于配置的忠实用户。 尽管需要花点时间学习 CakePHP 的约定，但在以后的工作
+中你会节省很多时间。 通过遵循约定，你可以或者免费的功能并且让你从跟踪配置文件的维护
+噩梦中解放出来。约定可以让大家有一个统一的开发体验，以方便其它开发者加入进来并提供帮助。
 
-Controller Conventions
+
+Controller 约定
 ======================
 
-Controller class names are plural, PascalCased, and end in ``Controller``.
-``UsersController`` and ``ArticleCategoriesController`` are both examples of
-conventional controller names.
+控制器类名必须是负数，大驼峰形式，并且以 ``Controller`` 结尾。例如 ``UsersController`` 
+和 ``ArticleCategoriesController`` 。
 
-Public methods on Controllers are often exposed as 'actions' accessible through
-a web browser. For example the ``/users/view`` maps to the ``view()`` method
-of the ``UsersController`` out of the box. Protected or private methods
-cannot be accessed with routing.
+控制器里的 ``public`` 方法通常用来作为 "action"，是可以被浏览器访问的。比如 ``/users/view`` 映射
+到 控制器``UsersController`` 的 ``view()``方法。``protected`` 或者 ``private`` 方法无法通过
+路由访问。
 
-URL Considerations for Controller Names
+Controller 名称的 URL注意事项
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As you've just seen, single word controllers map to a simple lower case URL
-path. For example, ``UsersController`` (which would be defined in the file name
-**UsersController.php**) is accessed from http://example.com/users.
+正如你所见，单个单词的控制器映射到一个简单的小写形式的url路径上。例如 ``UsersController`` (定义在
+文件 **UsersController.php**) 可以从 http://example.com/users. 访问。
 
-While you can route multiple word controllers in any way you like, the
-convention is that your URLs are lowercase and dashed using the ``DashedRoute``
-class, therefore ``/article-categories/view-all`` is the correct form to access
-the ``ArticleCategoriesController::viewAll()`` action.
+虽然你可以用你喜欢的方式路由到多单词的控制器上，但约定是你的Url应该是小写的并且使用“-”连接多单词；可以
+使用 ``DashedRoute``轻易实现，因此 ``/article-categories/view-all`` 可以访问到控制器行为
+``ArticleCategoriesController::viewAll()`` 上
 
-When you create links using ``this->Html->link()``, you can use the following
-conventions for the url array::
+当你使用``this->Html->link()``创建链接时，你可以使用下面的约定构造Url数组::
 
     $this->Html->link('link-title', [
         'prefix' => 'MyPrefix' // PascalCased
@@ -41,120 +35,95 @@ conventions for the url array::
         'action' => 'actionName' // camelBacked
     ]
 
-For more information on CakePHP URLs and parameter handling, see
-:ref:`routes-configuration`.
+关于更多的 URL和参数处理，可以参考 route :ref:`routes-configuration`。
+
 
 .. _file-and-classname-conventions:
 
-File and Class Name Conventions
+文件和类名约定
 ===============================
 
-In general, filenames match the class names, and follow the PSR-4 standard for
-autoloading. The following are some examples of class names and their filenames:
+通常情况下文件名和类名是相匹配的，遵循 PSR-4 自动加载原则，下面的是正确的例子:
 
--  The Controller class ``LatestArticlesController`` would be found in a file
-   named **LatestArticlesController.php**
--  The Component class ``MyHandyComponent`` would be found in a file named
-   **MyHandyComponent.php**
--  The Table class ``OptionValuesTable`` would be found in a file named
-   **OptionValuesTable.php**.
--  The Entity class ``OptionValue`` would be found in a file named
-   **OptionValue.php**.
--  The Behavior class ``EspeciallyFunkableBehavior`` would be found in a file
-   named **EspeciallyFunkableBehavior.php**
--  The View class ``SuperSimpleView`` would be found in a file named
-   **SuperSimpleView.php**
--  The Helper class ``BestEverHelper`` would be found in a file named
-   **BestEverHelper.php**
+-  控制器类 ``LatestArticlesController`` 对应的文件名 **LatestArticlesController.php**
+-  组件类 ``MyHandyComponent`` 对应的文件名 **MyHandyComponent.php**
+-  表类 ``OptionValuesTable`` 对应的文件名 **OptionValuesTable.php**.
+-  实体类 ``OptionValue`` 对应的文件名 **OptionValue.php**.
+-  行为类 ``EspeciallyFunkableBehavior`` 对应的文件名 **EspeciallyFunkableBehavior.php**
+-  视图类 ``SuperSimpleView`` 对应的文件名 **SuperSimpleView.php**
+-  助手类 ``BestEverHelper`` 对应的文件名 **BestEverHelper.php**
 
-Each file would be located in the appropriate folder/namespace in your app
-folder.
+每个文件都位于你的app目录下类的命名空间对应的文件夹下。
 
 .. _model-and-database-conventions:
 
-Database Conventions
+数据库约定
 ====================
 
-Table names corresponding to CakePHP models are plural and underscored. For
-example ``users``, ``article_categories``, and ``user_favorite_pages``
-respectively.
+对应 CakePHP 模型的数据表名是单词的复数并且使用下划线连接的形式。比如 ``users``, ``article_categories``, 
+和 ``user_favorite_pages``
 
-Field/Column names with two or more words are underscored: ``first_name``.
 
-Foreign keys in hasMany, belongsTo/hasOne relationships are recognized by
-default as the (singular) name of the related table followed by ``_id``. So if
-Users hasMany Articles, the ``articles`` table will refer to the ``users``
-table via a ``user_id`` foreign key. For a table like ``article_categories``
-whose name contains multiple words, the foreign key would be
-``article_category_id``.
+有两个单词以上的 字段/列 要使用下划线形式： ``first_name``。
 
-Join tables, used in BelongsToMany relationships between models, should be named
-after the model tables they will join or the bake command won't work, arranged in
-alphabetical order (``articles_tags`` rather than ``tags_articles``). If you
-need to add additional columns on the junction table you should create
-a separate entity/table class for that table.
+在 hasMany, belongsTo/hasOne 关系中的外键默认被识别为相关表名的单数形式连接上 ``_id``; 所以在 
+"Users" hasMany "Articles"关系中; ``articles`` 表通过外键``user_id`` 与 ``users`` 建立参照关系。
+如果一个表像 ``article_categories`` 包含多个单词，那么外键应该被命名为 ``article_category_id``。
 
-In addition to using an auto-incrementing integer as primary keys, you can also
-use UUID columns. CakePHP will create UUID values automatically using
-(:php:meth:`Cake\\Utility\\Text::uuid()`) whenever you save new records using
-the ``Table::save()`` method.
+在被用于模型之间的 BelongsToMany(多对多) 关系的连接表应该以他们将要加入的模型的表命名，否则 bake 命令
+将会不工作，按照字母顺序排列（例如是 ``articles_tags`` 而不是 ``tags_articles``），如果你需要在连接表
+里加入额外的字段，那么你需要为该表单独创建 entity/table 类。
 
-Model Conventions
+
+除了使用自动递增的整数作为主键，你也可以使用 UUID 列， 当你使用``Table::save()`` 保存一条新纪录时，
+CakePHP 会自动地创建一个 UUID 值，使用 (:php:meth:`Cake\\Utility\\Text::uuid()`) 生成;
+
+
+模型约定
 =================
 
-Table class names are plural, PascalCased and end in ``Table``. ``UsersTable``,
-``ArticleCategoriesTable``, and ``UserFavoritePagesTable`` are all examples of
-table class names matching the ``users``, ``article_categories`` and
-``user_favorite_pages`` tables respectively.
+``Table``类应该是单词的复数大驼峰形式，并且以 ``Table`` 结尾。比如 ``Table``. ``UsersTable``,
+``ArticleCategoriesTable``, 和 ``UserFavoritePagesTable`` 分别匹配数据表 ``users``, ``article_categories``
+和 ``user_favorite_pages``。
 
-Entity class names are singular PascalCased and have no suffix. ``User``,
-``ArticleCategory``, and ``UserFavoritePage`` are all examples of entity names
-matching the ``users``, ``article_categories`` and ``user_favorite_pages``
-tables respectively.
+实体类(Entity) 是单词的单数大驼峰形式，不需要后缀。例如 User``,``ArticleCategory``, 和 ``UserFavoritePage``
+分别匹配数据表  ``users``, ``article_categories`` 和 ``user_favorite_pages``。
 
-View Conventions
+视图约定
 ================
 
-View template files are named after the controller functions they display, in an
-underscored form. The ``viewAll()`` function of the ``ArticlesController`` class
-will look for a view template in **src/Template/Articles/view_all.ctp**.
+视图模板文件要以它对应的控制器的方法名进行命名，使用小写下划线形式。比如 控制器 ``ArticlesController`` 的行为
+``viewAll`` 对应的模板位于 **src/Template/Articles/view_all.ctp**。
 
-The basic pattern is
+
+基本形式是
 **src/Template/Controller/underscored_function_name.ctp**.
 
 .. note::
 
-    By default CakePHP uses English inflections. If you have database
-    tables/columns that use another language, you will need to add inflection
-    rules (from singular to plural and vice-versa).  You can use
-    :php:class:`Cake\\Utility\\Inflector` to define your custom inflection
-    rules. See the documentation about :doc:`/core-libraries/inflector` for more
-    information.
+    默认情况下 CakePHP 使用英语映射(inflections)。如果你的数据表/列 使用其它语言命令，你需要增加映射规则(从单数到复数，反之亦然)
+    你可以使用 :php:class:`Cake\\Utility\\Inflector` 定义你的映射股则。 查看更多关于:doc:`/core-libraries/inflector`的文档
 
-Summarized
+总结
 ==========
 
 By naming the pieces of your application using CakePHP conventions, you gain
 functionality without the hassle and maintenance tethers of configuration.
 Here's a final example that ties the conventions together:
 
--  Database table: "articles"
--  Table class: ``ArticlesTable``, found at **src/Model/Table/ArticlesTable.php**
--  Entity class: ``Article``, found at **src/Model/Entity/Article.php**
--  Controller class: ``ArticlesController``, found at
-   **src/Controller/ArticlesController.php**
--  View template, found at **src/Template/Articles/index.ctp**
+通过使用 CakePHP 的约定来命名应用程序的各个部分，可以避免进行配置和维护的麻烦，下面是最后一个将约定联系在一起的例子。
 
-Using these conventions, CakePHP knows that a request to
-http://example.com/articles/ maps to a call on the ``index()`` function of the
-ArticlesController, where the Articles model is automatically available (and
-automatically tied to the 'articles' table in the database), and renders to a
-file. None of these relationships have been configured by any means other than
-by creating classes and files that you'd need to create anyway.
+-  数据表: "articles"
+-  Table 类: ``ArticlesTable``, 文件位于 **src/Model/Table/ArticlesTable.php**
+-  Entity 类: ``Article``, 文件位于 **src/Model/Entity/Article.php**
+-  控制器 class: ``ArticlesController``, 文件位于 **src/Controller/ArticlesController.php**
+-  视图模板 **src/Template/Articles/index.ctp**
 
-Now that you've been introduced to CakePHP's fundamentals, you might try a run
-through the :doc:`/tutorials-and-examples/cms/installation` to see how things fit
-together.
+通过这些约定，CakePHP 知道一个请求 http://example.com/articles/ 会映射到到控制器``ArticlesController``的行为 ``index()``
+上，在这个控制器里模型 ``Articles`` 会被自动加载(自动绑定到数据库中的 "articles" 表上)，并且自动渲染一个视图文件。在这个过程中
+除了创建必要的类和文件外，没有一点是需要通过使用配置的。
+
+现在你已经了解到了CakePHP的基础知识，你可以尝试通过 :doc:`/tutorials-and-examples/cms/installation 来查看他们是怎么融合在一起的。
 
 .. meta::
     :title lang=en: CakePHP Conventions

@@ -1,26 +1,22 @@
-Where to Get Help
+从哪里获取帮助
 #################
 
-The Official CakePHP website
+CakePHP 官方网站
 ============================
 
 `https://cakephp.org <https://cakephp.org>`_
 
-The Official CakePHP website is always a great place to visit. It features links
-to oft-used developer tools, screencasts, donation opportunities, and downloads.
+官方网站一直是个不错的网站，它提供了经常使用的开发工具，截屏(译者注：screencasts，不知何意)，捐赠机会和下载通道。
 
-The Cookbook
+Cookbook
 ============
 
 `https://book.cakephp.org <https://book.cakephp.org>`_
 
-This manual should probably be the first place you go to get answers. As with
-many other open source projects, we get new folks regularly. Try your best to
-answer your questions on your own first. Answers may come slower, but will
-remain longer – and you'll also be lightening our support load. Both the manual
-and the API have an online component.
+这本手册应该是你第一个找到答案的地方。和一些其它开源项目一样，我们定期地会遇到新人。尽你可能的先自己找到答案，虽然
+答案会来的比较晚，但这会让你记忆尤新 -- 这也会减轻我们的支持负担。 手册和APi 都有一个在线版。
 
-The Bakery
+面包店(Bakery)
 ==========
 
 `https://bakery.cakephp.org <https://bakery.cakephp.org>`_
@@ -30,110 +26,104 @@ it out for tutorials, case studies, and code examples. Once you're acquainted
 with CakePHP, log on and share your knowledge with the community and gain
 instant fame and fortune.
 
-The API
+CakePHP 面包店是一个和 CakePHP 所有东西都有关的地方，查看教程，案例研究和代码实例；一旦你熟悉 CakePHP，登录并与社区
+分享你的知识并获得一些及时的名誉和财富
+
+API
 =======
 
 `https://api.cakephp.org/ <https://api.cakephp.org/>`_
 
-Straight to the point and straight from the core developers, the CakePHP API
-(Application Programming Interface) is the most comprehensive documentation
-around for all the nitty gritty details of the internal workings of the
-framework. It's a straight forward code reference, so bring your propeller hat.
+直接从核心开发人员的角度来看， CakePHP API（应用程序编程接口）是关于框架内部工作的所有细节的最全面的文档。 这是一个直接的代码参考，
+所以带上你的螺旋桨帽子。
 
-The Test Cases
+
+测试案例
 ==============
 
-If you ever feel the information provided in the API is not sufficient, check
-out the code of the test cases provided with CakePHP. They can serve as
-practical examples for function and data member usage for a class. ::
+如果你感觉API里提供的信息不够充分，查看 CakePHP 提供的单元测试代码，它们可以当做一些类和函数的使用案例::
 
     tests/TestCase/
 
-The IRC Channel
+IRC 频道
 ===============
 
-**IRC Channels on irc.freenode.net:**
+** 在 irc.freenode.net 上的频道:**
 
--  `#cakephp <irc://irc.freenode.net/cakephp>`_ -- General Discussion
--  `#cakephp-docs <irc://irc.freenode.net/cakephp-docs>`_ -- Documentation
--  `#cakephp-bakery <irc://irc.freenode.net/cakephp-bakery>`_ -- Bakery
--  `#cakephp-fr <irc://irc.freenode.net/cakephp-fr>`_ -- French Canal.
+-  `#cakephp <irc://irc.freenode.net/cakephp>`_ -- 一般的讨论
+-  `#cakephp-docs <irc://irc.freenode.net/cakephp-docs>`_ -- 文档
+-  `#cakephp-bakery <irc://irc.freenode.net/cakephp-bakery>`_ -- 面包店
+-  `#cakephp-fr <irc://irc.freenode.net/cakephp-fr>`_ -- 法语频道.
 
-If you're stumped, give us a holler in the CakePHP IRC channel.
-Someone from the `development team <https://github.com/cakephp?tab=members>`_
-is usually there, especially during the daylight hours for North and South
-America users. We'd love to hear from you, whether you need some help, want to
-find users in your area, or would like to donate your brand new sports car.
+如果你遇到了问题，可以在 CakePHP IRC 频道上找我们。来自 `开发组 <https://github.com/cakephp?tab=members>`_ 的成员通常在哪里,
+尤其是在北美和南美洲的白天。 无论你是否需要帮助或者想要找到您所在地区的用户，还是想捐出你的全新跑车，都可以找我们。
 
 .. _cakephp-official-communities:
 
-Official CakePHP Forum
+CakePHP 官方论坛
 ======================
-`CakePHP Official Forum <http://discourse.cakephp.org>`_
+`官方论坛 <http://discourse.cakephp.org>`_
 
-Our official forum where you can ask for help, suggest ideas and have a talk
-about CakePHP. It's a perfect place for quickly finding answers and help others.
-Join the CakePHP family by signing up.
+我们的官方论坛，您可以寻求帮助，提出想法，讨论CakePHP。 这是快速找到答案并帮助他人的理想场所。 来注册加入CakePHP家族吧！
 
 Stackoverflow
 =============
 
 `https://stackoverflow.com/ <https://stackoverflow.com/questions/tagged/cakephp/>`_
 
-Tag your questions with ``cakephp`` and the specific version you are using to
-enable existing users of stackoverflow to find your questions.
+给你的问题加上 ``cakephp`` 标签方便其他用户找到你的额问题
 
-Where to get Help in your Language
+非英语帮助中心
 ==================================
 
-Brazilian Portuguese
+巴西葡萄牙语
 --------------------
 
-- `Brazilian CakePHP Community <http://cakephp-br.org>`_
+- `巴西 CakePHP 社区 <http://cakephp-br.org>`_
 
-Danish
+丹麦语
 ------
 
-- `Danish CakePHP Slack Channel <https://cakesf.slack.com/messages/denmark/>`_
+- `丹麦 CakePHP Slack 频道 <https://cakesf.slack.com/messages/denmark/>`_
 
-French
+法语
 ------
 
-- `French CakePHP Community <http://cakephp-fr.org>`_
+- `法语 CakePHP 社区 <http://cakephp-fr.org>`_
 
-German
+德语
 ------
 
-- `German CakePHP Slack Channel <https://cakesf.slack.com/messages/german/>`_
-- `German CakePHP Facebook Group <https://www.facebook.com/groups/146324018754907/>`_
+- `德语 CakePHP Slack 频道 <https://cakesf.slack.com/messages/german/>`_
+- `德语 CakePHP Facebook 小组 <https://www.facebook.com/groups/146324018754907/>`_
 
-Iranian
+伊朗语
 -------
 
-- `Iranian CakePHP Community <http://cakephp.ir>`_
+- `伊朗 CakePHP 社区 <http://cakephp.ir>`_
 
-Dutch
+荷兰语
 -----
 
-- `Dutch CakePHP Slack Channel <https://cakesf.slack.com/messages/netherlands/>`_
+- `荷兰语 CakePHP Slack 频道 <https://cakesf.slack.com/messages/netherlands/>`_
 
-Japanese
+日语
 --------
 
-- `Japanese CakePHP Slack Channel <https://cakesf.slack.com/messages/japanese/>`_
-- `Japanese CakePHP Facebook Group <https://www.facebook.com/groups/304490963004377/>`_
+- `日语 CakePHP Slack 频道 <https://cakesf.slack.com/messages/japanese/>`_
+- `日语 CakePHP Facebook 小组 <https://www.facebook.com/groups/304490963004377/>`_
 
-Portuguese
+葡萄牙语
 ----------
 
-- `Portuguese CakePHP Google Group <http://groups.google.com/group/cakephp-pt>`_
+- `葡萄牙语 CakePHP Google 小组 <http://groups.google.com/group/cakephp-pt>`_
 
-Spanish
+西班牙语
 -------
 
-- `Spanish CakePHP Slack Channel <https://cakesf.slack.com/messages/spanish/>`_
-- `Spanish CakePHP IRC Channel <irc://irc.freenode.net/cakephp-es>`_
-- `Spanish CakePHP Google Group <http://groups.google.com/group/cakephp-esp>`_
+- `西班牙语 CakePHP Slack 频道 <https://cakesf.slack.com/messages/spanish/>`_
+- `西班牙语 CakePHP IRC 频道 <irc://irc.freenode.net/cakephp-es>`_
+- `西班牙语 CakePHP Google 小组 <http://groups.google.com/group/cakephp-esp>`_
 
 .. meta::
     :title lang=en: Where to Get Help
