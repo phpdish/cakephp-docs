@@ -1,7 +1,7 @@
-Using CakePHP
+使用 CakePHP
 #############
 
-Introduction to all the key parts of CakePHP:
+下面是 CakePHP 中的所有的关键部分：
 
 * :doc:`/installation`
 * :doc:`/development/configuration`

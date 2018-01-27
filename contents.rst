@@ -9,7 +9,7 @@ Contents
 
 .. toctree::
     :maxdepth: 3
-    :caption: Preface
+    :caption: 前言
 
     intro
     quickstart

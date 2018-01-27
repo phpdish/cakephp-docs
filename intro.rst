@@ -1,39 +1,33 @@
-CakePHP at a Glance
+CakePHP 一览
 ###################
 
-CakePHP is designed to make common web-development tasks simple, and easy. By
-providing an all-in-one toolbox to get you started the various parts of CakePHP
-work well together or separately.
+CakePHP旨在使普通的Web开发任务变得简单而容易。 通过给你提供一个全功能的工具箱来启动CakePHP的各个部分，
+它们可以很好的结合在一起或者单独的工作。
 
-The goal of this overview is to introduce the general concepts in CakePHP, and
-give you a quick overview of how those concepts are implemented in CakePHP. If
-you are itching to get started on a project, you can :doc:`start with the
-tutorial </tutorials-and-examples/cms/installation>`, or :doc:`dive into the docs
-</topics>`.
+本文介绍的是CakePHP中的一些常用概念，让你快速的了解一下这些概念在CakePHP中是如何实现的，
+如果你渴望开始一个项目，你可以从这个 :doc:`教程</tutorials-and-examples/cms/installation>` 
+开始，或者深入到 :doc:`文档</topics>`。
 
-Conventions Over Configuration
+
+
+约定由于配置
 ==============================
 
-CakePHP provides a basic organizational structure that covers class names,
-filenames, database table names, and other conventions. While the conventions
-take some time to learn, by following the conventions CakePHP provides you can
-avoid needless configuration and make a uniform application structure that makes
-working with various projects simple. The :doc:`conventions chapter
-</intro/conventions>` covers the various conventions that CakePHP uses.
+CakePHP 提供了一个基本的组织结构，涵盖了类名，文件名，数据库表明以及其它的约定；尽管这些约定需要花费
+一些时间来学习，但按照CakePHP 提供的约定可以避免不必要的配置以及可以创建一个统一的应用程序结构从而使
+得各种项目的工作变得简单，查看 :doc:`约定章节</intro/conventions>` ，该章节介绍了 CakePHP 使用的各种
+约定。
 
-The Model Layer
+
+Model 层
 ===============
 
-The Model layer represents the part of your application that implements the
-business logic. It is responsible for retrieving data and converting it into the
-primary meaningful concepts in your application. This includes processing,
-validating, associating or other tasks related to handling data.
+Model 层在应用程序中代表业务逻辑实现的部分(译者注：即MBVC中的B,在Cake中B与M是合并的)。它主要负责检索数据并且
+把它转换成应用中需要的数据形式。也用来做数据处理、验证、关联以及其它的与数据处理有关的任务。
 
-In the case of a social network, the Model layer would take care of
-tasks such as saving the user data, saving friends' associations, storing
-and retrieving user photos, finding suggestions for new friends, etc.
-The model objects can be thought of as "Friend", "User", "Comment", or
-"Photo". If we wanted to load some data from our ``users`` table we could do::
+在社交网络应用的例子中，Model 层将负责存储用户数据，保存与好友的关联关系，存储和检索用户的照片，推荐新的好友等等。
+Model 对象假设为 Friend", "User", "Comment" 或者 "Photo",如果我们打算从  ``users`` 表取出一些数据，我们可以
+这么做::
 
     use Cake\ORM\TableRegistry;
 
@@ -43,12 +37,9 @@ The model objects can be thought of as "Friend", "User", "Comment", or
         echo $row->username;
     }
 
-You may notice that we didn't have to write any code before we could start
-working with our data. By using conventions, CakePHP will use standard classes
-for table and entity classes that have not yet been defined.
+你可能注意到在处理数据之前我们并没有写任何代码。通过使用约定， CakePHP 会对那些没有定义的table和entity使用标准类(stdClass) 
 
-If we wanted to make a new user and save it (with validation) we would do
-something like::
+如果我们打算创建一个新用户并且保存它（带验证），我们可以这么做::
 
     use Cake\ORM\TableRegistry;
 
@@ -56,15 +47,12 @@ something like::
     $user = $users->newEntity(['email' => 'mark@example.com']);
     $users->save($user);
 
-The View Layer
+View 层
 ==============
 
-The View layer renders a presentation of modeled data. Being separate from the
-Model objects, it is responsible for using the information it has available
-to produce any presentational interface your application might need.
+View 层是用来渲染模型数据的。它可以使用 Model 提供的数据生成应用程序可能需要的任一表现形式。
 
-For example, the view could use model data to render an HTML view template containing it,
-or a XML formatted result for others to consume::
+例如，View可以使用模型数据来渲染包含该模型的 html 视图模板，或者使用XML格式化以供其它使用::
 
     // In a view template file, we'll render an 'element' for each user.
     <?php foreach ($users as $user): ?>
@@ -73,26 +61,20 @@ or a XML formatted result for others to consume::
         </li>
     <?php endforeach; ?>
 
-The View layer provides a number of extension points like :ref:`view-templates`, :ref:`view-elements`
-and :doc:`/views/cells` to let you re-use your presentation logic.
+视图层提供了一些列的扩展像 :ref:`view-templates`, :ref:`view-elements` 和 :doc:`/views/cells`
+来让你复用你的表现逻辑。
 
-The View layer is not only limited to HTML or text representation of the data.
-It can be used to deliver common data formats like JSON, XML, and through
-a pluggable architecture any other format you may need, such as CSV.
+View 层不仅仅局限于数据的 html 或 text 的表现形式。它可以用来提供一些常见的数据格式，比如 JSON，XML, 
+通过它的可插拔架构，你可以轻易扩展实现一些其它的你可能需要的格式，比如CSV
 
-The Controller Layer
+Controller 层
 ====================
 
-The Controller layer handles requests from users. It is responsible for
-rendering a response with the aid of both the Model and the View layers.
+Controller 层用来处理用户的请求(request)，它负责借助Model和View层来渲染一个响应(response)。
 
-A controller can be seen as a manager that ensures that all resources needed for
-completing a task are delegated to the correct workers. It waits for petitions
-from clients, checks their validity according to authentication or authorization
-rules, delegates data fetching or processing to the model, selects the type of
-presentational data that the clients are accepting, and finally delegates the
-rendering process to the View layer. An example of a user registration
-controller would be::
+一个控制器可以被看作是一个管理者，确保完成任务所需的所有资源都被委派给正确的工作人员。它等待来自客户端的请求，
+根据认证或授权规则检查其有效性，将数据获取或处理委托给模型，选择客户端正在接受的表示数据的类型，最后将渲染过程
+委派给视图层。 下面是用户注册控制器的例子::
 
     public function add()
     {
@@ -108,59 +90,47 @@ controller would be::
         $this->set('user', $user);
     }
 
-You may notice that we never explicitly rendered a view. CakePHP's conventions
-will take care of selecting the right view and rendering it with the view data
-we prepared with ``set()``.
+你可能注意到我们没有明确渲染一个视图，CakePHP的约定将负责选择正确的视图，并使用我们用 ``set()``
+设置的视图数据来渲染它。
 
 .. _request-cycle:
 
-CakePHP Request Cycle
+CakePHP 请求周期
 =====================
 
-Now that you are familiar with the different layers in CakePHP, lets review how
-a request cycle works in CakePHP:
+现在你可能以及熟悉了CakePHP中的不同层级，现在让我们复习下CakePHP中的一个完整的请求周期:
+
 
 .. figure:: /_static/img/typical-cake-request.png
    :align: center
-   :alt: Flow diagram showing a typical CakePHP request
+   :alt: 一个典型的CakePHP请求的流程图
 
-The typical CakePHP request cycle starts with a user requesting a page or
-resource in your application. At a high level each request goes through the
-following steps:
+典型的CakePHP请求流程从用户请求应用程序中的页面或资源开始。 在高层次上，每个请求都经过以下步骤：
 
-#. The webserver rewrite rules direct the request to **webroot/index.php**.
-#. Your Application is loaded and bound to an ``HttpServer``.
-#. Your application's middleware is initialized.
-#. A request and response is dispatched through the PSR-7 Middleware that your
-   application uses. Typically this includes error trapping and routing.
-#. If no response is returned from the middleware and the request contains
-   routing information, a controller & action are selected.
-#. The controller's action is called and the controller interacts with the
-   required Models and Components.
-#. The controller delegates response creation to the View to generate the output
-   resulting from the model data.
-#. The view uses Helpers and Cells to generate the response body and headers.
-#. The response is sent back out through the :doc:`/controllers/middleware`.
-#. The ``HttpServer`` emits the response to the webserver.
+#. Web服务器的重写规则将请求定向到 **webroot/index.php** 脚本上。
+#. 你的应用程序被加载并绑定到一个 ``HttpServer``。
+#. 你的应用的中间件(Middleware)被初始化。
+#. request和response被分发到你的应用使用的 PSR-7 中间件上，通常包括错误捕获和路由。
+#. 如果中间件没有返回 response，并且 request 中包含路由相关的信息，那么控制器和动作(controller & action)将会被选择。
+#. Controller 的 action 被调用，控制器将会和所需的模型(Model)和组件(Component)进行交互
+#. Controller 将 response 的创建委托给 View 以生成模型数据产生的输出。
+#. View 使用 Helper 和 Cells 来生成 response 的 body 和 header 部分。
+#. response 通过 :doc:`/controllers/middleware` 被返回。
+#.  ``HttpServer`` 向web服务器发出响应。
 
-Just the Start
+这只是个开始
 ==============
 
-Hopefully this quick overview has piqued your interest. Some other great
-features in CakePHP are:
+希望这个快速的概述激起了你的兴趣。 CakePHP中的其他的一些强大的功能：
 
-* A :doc:`caching </core-libraries/caching>` framework that integrates with
-  Memcached, Redis and other backends.
-* Powerful :doc:`code generation tools
-  </bake/usage>` so you can start immediately.
-* :doc:`Integrated testing framework </development/testing>` so you can ensure
-  your code works perfectly.
+* 集成了 Memcached, Redis,和其它后端的 :doc:`缓存 </core-libraries/caching>` 框架。
+* 强大的 :doc:`代码生成工具 </bake/usage>` 可以让你快速开始。
+* :doc:`集成测试框架 </development/testing>` 来确保你的代码可以正确的工作。
 
-The next obvious steps are to :doc:`download CakePHP </installation>`, read the
-:doc:`tutorial and build something awesome
-</tutorials-and-examples/cms/installation>`.
+下一步 :doc:`下载 CakePHP </installation>`, 阅读 :doc:`教程 </tutorials-and-examples/cms/installation>`.
 
-Additional Reading
+
+附加阅读
 ==================
 
 .. toctree::
