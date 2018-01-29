@@ -1,11 +1,8 @@
-CMS Tutorial - Creating the Database
+CMS 教程 - 创建数据库
 ####################################
 
-Now that we have CakePHP installed, let's set up the database for our :abbr:`CMS
-(Content Management System)` application. If you haven't already done so, create
-an empty database for use in this tutorial, with a name of your choice, e.g.
-``cake_cms``. You can execute the following SQL to create the necessary
-tables::
+现在我们已经安装了 CakePHP, 接下来让给 我们的 :abbr:`CMS(内容管理系统)` 应用创建数据库。
+先创建一个空的数据库，命名为``cake_cms``。 执行下面的 SQL 语句创建必要的表::
 
     USE cake_cms;
 
@@ -54,24 +51,18 @@ tables::
     VALUES
     (1, 'First Post', 'first-post', 'This is the first post.', 1, now(), now());
 
-You may have noticed that the ``articles_tags`` table used a composite primary
-key. CakePHP supports composite primary keys almost everywhere allowing you to
-have simpler schemas that don't require additional ``id`` columns.
+你可能已经注意到了 ``articles_tags`` 表使用了复合主键，CakePHP 允许你使用复合主键让你的
+表结构保持简单而不必添加额外的 ``id`` 字段。
 
-The table and column names we used were not arbitrary. By using CakePHP's
-:doc:`naming conventions </intro/conventions>`, we can leverage CakePHP more
-effectively and avoid needing to configure the framework. While CakePHP is
-flexible enough to accommodate almost any database schema, adhering to the
-conventions will save you time as you can leverage the convention based defaults
-CakePHP provides.
+我们使用数据表和字段名不是随意的，通过使用 CakePHP 的:doc:`命名约定</intro/conventions>`
+可以更有效的使用CakePHP，避免去配置框架。虽然 CakePHP 足够的灵活可以适配多种数据库结构，但
+为了节省你的时间，你可以使用CakePHP 提供的默认约定。
 
-Database Configuration
+Database 配置
 ======================
 
-Next, let's tell CakePHP where our database is and how to connect to it. Replace
-the values in the ``Datasources.default`` array in your **config/app.php** file
-with those that apply to your setup. A sample completed configuration array
-might look something like the following::
+下一步，我们要告诉 CakePHP 数据库在哪，该怎么连接上它，打开**config/app.php** 文件，
+替换 `Datasources.default``数组。下面是一个完整的配置信息数组::
 
     <?php
     return [
@@ -93,27 +84,22 @@ might look something like the following::
         // More configuration below.
     ];
 
-Once you've saved your **config/app.php** file, you should see that 'CakePHP is
-able to connect to the database' section have a green chef hat.
+一旦你保存了  **config/app.php**  文件，刷新默认的欢迎界面，你会发现 'CakePHP is
+able to connect to the database' 节也出现了绿色的厨师帽.
 
 .. note::
+   
+    **config/app.default.php** 文件是配置文件的副本。
 
-    A copy of CakePHP's default configuration file is found in
-    **config/app.default.php**.
-
-Creating our First Model
+生成第一个模型
 ========================
 
-Models are the heart of a CakePHP applications. They enable us to read and
-modify our data. They allow us to build relations between our data, validate
-data, and apply application rules. Models build the foundations necessary to
-build our controller actions and templates.
+模型是 CakePHP 应用的核心。它可以让我们查询和修改我们的数据，创建数据的
+关联关系，以及验证数据。模型是我们创建控制器行为和模板文件的基础。
 
-CakePHP's models are composed of ``Table`` and ``Entity`` objects. ``Table``
-objects provide access to the collection of entities stored in a specific table.
-They are stored in **src/Model/Table**. The file we'll be creating will be saved
-to **src/Model/Table/ArticlesTable.php**. The completed file should look like
-this::
+CakePHP 的模型是由 ``Table`` 对象和 ``Entity``对象的组成的。``Table`` 对象提供了
+对存储在特定表的数据集访问方式，它们存储在 **src/Model/Table**。我们将要创建的会存储为
+**src/Model/Table/ArticlesTable.php**，完整的文件像这个样子::
 
     <?php
     // src/Model/Table/ArticlesTable.php
@@ -129,24 +115,19 @@ this::
         }
     }
 
-We've attached the :doc:`/orm/behaviors/timestamp` behavior which will
-automatically populate the ``created`` and ``modified`` columns of our table.
-By naming our Table object ``ArticlesTable``, CakePHP can use naming conventions
-to know that our model uses the ``articles`` table. CakePHP also uses
-conventions to know that the ``id`` column is our table's primary key.
+我们添加了一个 :doc:`/orm/behaviors/timestamp` 行为，这会让模型自动地处理表中的``created`` 和 
+``modified`` 字段。通过把 Table 对象命名为 ``ArticlesTable``，根据命名约定 CakePHP 会知道这个模型
+使用的是 ``articles`` 表，并且主键是 ``id`` 字段。
 
 .. note::
+    
+    如果在 **src/Model/Table** 位置没有找到正确的文件， CakePHP 会为你动态的创建一个模型对象。这也意味着
+    如果你不小心把文件名弄错了（比如 articlestable.php 或者 ArticleTable.php）， CakePHP 将不会识别你的
+    任何设置，而使用动态生成的模型。
 
-    CakePHP will dynamically create a model object for you if it
-    cannot find a corresponding file in **src/Model/Table**. This also means
-    that if you accidentally name your file wrong (i.e. articlestable.php or
-    ArticleTable.php), CakePHP will not recognize any of your settings and will
-    use the generated model instead.
 
-We'll also create an Entity class for our Articles. Entities represent a single
-record in the database, and provide row level behavior for our data. Our entity
-will be saved to **src/Model/Entity/Article.php**. The completed file should
-look like this::
+我们也要为我们的 Articles 创建一个 Entity 类，实体代表数据库中的一行记录，给我们的数据提供行级别的行为扩展。
+我们的实体会被保存在 **src/Model/Entity/Article.php**，完整的文件类似下面的样子::
 
     <?php
     // src/Model/Entity/Article.php
@@ -163,10 +144,8 @@ look like this::
         ];
     }
 
-Our entity is quite slim right now, and we've only setup the ``_accessible``
-property which controls how properties can be modified by
-:ref:`entities-mass-assignment`.
+我们的 Entity 实现的非常苗条，我们仅需要设置 ``_accessible`` 属性即可，这个控制那些属性可以被修改:ref:`entities-mass-assignment`
+。
 
-We can't do much with our models right now, so next we'll create our first
-:doc:`Controller and Template </tutorials-and-examples/cms/articles-controller>` to allow us to interact
-with our model.
+我们的模型做得差不多了，下一步我们来创建第一个 :doc:`控制器和模板 </tutorials-and-examples/cms/articles-controller>`来集成我们的
+模型。

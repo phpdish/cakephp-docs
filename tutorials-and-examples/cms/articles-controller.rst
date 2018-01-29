@@ -1,11 +1,10 @@
-CMS Tutorial - Creating the Articles Controller
+CMS 教程 - 创建“文章”控制器
 ###############################################
 
-With our model created, we need a controller for our articles. Controllers in
-CakePHP handle HTTP requests and execute business logic contained in model
-methods, to prepare the response. We'll place this new controller in a file
-called **ArticlesController.php** inside the **src/Controller** directory.
-Here's what the basic controller should look like::
+模型已经创建完毕，现在我们需要为“文章”创建控制器。在 CakePHP 中控制器用来处理 HTTP
+ 请求并且执行业务逻辑方法（保存在模型的方法里）来生成一个HTTP响应。我们把这个新控制器
+ 放在  **src/Controller** 目录下的 **ArticlesController.php** 里，下面是一个基本
+ 的控制器应有的样子::
 
     <?php
     // src/Controller/ArticlesController.php
@@ -16,13 +15,10 @@ Here's what the basic controller should look like::
     {
     }
 
-Now, let's add an action to our controller. Actions are controller methods that
-have routes connected to them. For example, when a user requests
-**www.example.com/articles/index** (which is also the same as
-**www.example.com/articles**), CakePHP will call the ``index`` method of your
-``ArticlesController``. This method should query the model layer, and prepare
-a response by rendering a Template in the View. The code for that action would
-look like this::
+现在让我们往控制器里添加一个行为。行为就是有路由能够对应上的控制器方法。例如，当有用户
+访问**www.example.com/articles/index** (和**www.example.com/articles**一样)， CakePHP
+会自动地调用 ``ArticlesController``的 ``index`` 方法（隐式路由实现）。这个方法会查询模型层
+并通过渲染视图层的一个模板文件来生成一个 HTTP 响应。这个行为的代码类似下面的样子::
 
     <?php
     // src/Controller/ArticlesController.php

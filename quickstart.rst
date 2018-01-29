@@ -1,8 +1,6 @@
-Quick Start Guide
+快速开始
 *****************
-
-The best way to experience and learn CakePHP is to sit down and build something.
-To start off we'll build a simple Content Management application.
+学习CakePHP最好的方式就是坐下来做一些事情，为了开始接下来我们将要创建一个简单CMS系统。
 
 .. include:: /tutorials-and-examples/cms/installation.rst
 .. include:: /tutorials-and-examples/cms/database.rst
